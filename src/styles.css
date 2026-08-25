@@ -1,0 +1,325 @@
+@import "tailwindcss";
+
+@theme {
+  --color-win-accent: #0078d7;
+  --color-win-accent-hover: #1a86dc;
+  --color-win-accent-press: #006cc1;
+  --color-win-accent-fg: #ffffff;
+  --color-win-taskbar: #101010;
+  --color-win-taskbar-fg: #ffffff;
+  --color-win-start: #1c1c1c;
+  --color-win-start-fg: #ffffff;
+  --color-win-start-muted: #c8c8c8;
+  --color-win-window: #ffffff;
+  --color-win-window-fg: #1a1a1a;
+  --color-win-window-muted: #5a5a5a;
+  --color-win-chrome: #e6e6e6;
+  --color-win-chrome-fg: #1a1a1a;
+  --color-win-caption: #ffffff;
+  --color-win-border: #a0a0a0;
+  --color-win-close: #e81123;
+  --color-win-close-fg: #ffffff;
+  --color-win-hover: rgb(255 255 255 / 12%);
+  --color-win-hover-dark: rgb(0 0 0 / 8%);
+  --color-win-menu: #f2f2f2;
+  --color-win-menu-fg: #1a1a1a;
+  --color-win-desktop-fg: #ffffff;
+  --color-win-field: #ffffff;
+  --color-win-field-fg: #1a1a1a;
+  --color-win-danger: #c42b1c;
+  --color-win-ok: #107c10;
+  --color-win-boot: #000000;
+  --color-win-boot-fg: #ffffff;
+  --color-wp-deep: #041a38;
+  --color-wp-mid: #0a4d8c;
+  --color-wp-light: #5ec8e8;
+  --color-wp-glow: #e8f7ff;
+
+  --font-sans: "Segoe UI", "Segoe UI Variable", "Noto Sans", "Liberation Sans",
+    system-ui, sans-serif;
+  --font-mono: "Cascadia Mono", "Consolas", "Segoe UI Mono", ui-monospace, monospace;
+
+  --text-win-xs: 0.6875rem;
+  --text-win-sm: 0.75rem;
+  --text-win-md: 0.8125rem;
+  --text-win-lg: 0.9375rem;
+  --text-win-xl: 1.25rem;
+  --text-win-lock: clamp(4.5rem, 14vw, 8rem);
+
+  --spacing-taskbar: 2.5rem;
+  --spacing-titlebar: 2rem;
+  --spacing-caption: 2.875rem;
+  --spacing-icon: 4.75rem;
+  --height-taskbar: 2.5rem;
+
+  --radius-win: 0px;
+  --radius-win-sm: 2px;
+  --radius-win-md: 4px;
+  --radius-tile: 0px;
+
+  --shadow-win: 0 8px 24px rgb(0 0 0 / 45%), 0 0 1px rgb(0 0 0 / 55%);
+  --shadow-menu: 0 4px 16px rgb(0 0 0 / 28%), 0 0 1px rgb(0 0 0 / 40%);
+  --shadow-flyout: 0 12px 40px rgb(0 0 0 / 40%);
+
+  --ease-win: cubic-bezier(0.23, 1, 0.32, 1);
+  --motion-quick: 150ms;
+  --motion-fast: 250ms;
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: #000;
+    color: var(--color-win-window-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  input,
+  textarea,
+  button {
+    font-family: inherit;
+  }
+}
+
+/* Wallpapers */
+.wp-bloom {
+  background-color: var(--color-wp-deep);
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% 112%, #7ad4f0 0%, transparent 52%),
+    radial-gradient(ellipse 42% 28% at 50% 100%, var(--color-wp-glow) 0%, #6ec8e6 28%, transparent 62%),
+    radial-gradient(ellipse 70% 40% at 18% 88%, rgb(94 200 232 / 28%) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 30% at 82% 92%, rgb(46 159 212 / 35%) 0%, transparent 70%),
+    linear-gradient(180deg, #031428 0%, #072c58 38%, #0d5a9a 68%, #2a9ad0 100%);
+}
+
+.wp-flow {
+  background-color: #062a3a;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% 110%, #3ec8c8 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 90% 0%, #0a6a8a 0%, transparent 50%),
+    linear-gradient(165deg, #041820 0%, #0a4a5c 45%, #1a8a9a 78%, #7ee0d0 100%);
+}
+
+.wp-dusk {
+  background-color: #1a1028;
+  background-image:
+    radial-gradient(ellipse 90% 50% at 50% 110%, #ff9a62 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 50% 100%, #ffe0b0 0%, transparent 50%),
+    linear-gradient(180deg, #0c1024 0%, #2a1848 40%, #8a3058 70%, #e07050 100%);
+}
+
+.wp-forest {
+  background-color: #062018;
+  background-image:
+    radial-gradient(ellipse 70% 45% at 70% 110%, #7dcc6e 0%, transparent 50%),
+    radial-gradient(ellipse 50% 30% at 20% 0%, #0a4a38 0%, transparent 60%),
+    linear-gradient(180deg, #031510 0%, #0a3a28 40%, #1a6a48 72%, #4aaa70 100%);
+}
+
+.wp-night {
+  background-color: #07080e;
+  background-image:
+    radial-gradient(circle at 20% 30%, #ffffff 0 1px, transparent 1.5px),
+    radial-gradient(circle at 70% 20%, #ffffff 0 1px, transparent 1.5px),
+    radial-gradient(circle at 40% 70%, rgb(255 255 255 / 70%) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 85% 55%, #ffffff 0 1px, transparent 1.5px),
+    radial-gradient(circle at 10% 80%, rgb(255 255 255 / 50%) 0 1px, transparent 1.5px),
+    radial-gradient(ellipse 50% 30% at 50% 100%, #1a3a6a 0%, transparent 70%),
+    linear-gradient(180deg, #05060c 0%, #0c1220 60%, #101828 100%);
+}
+
+.wp-accent {
+  background: var(--color-win-accent);
+}
+
+/* Boot loader — six chasing dots */
+.win-loader {
+  position: relative;
+  width: 54px;
+  height: 54px;
+}
+
+.win-loader span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px;
+  border-radius: 50%;
+  background: var(--color-win-boot-fg);
+  animation: win-dot 3.6s infinite var(--ease-win);
+  opacity: 0;
+}
+
+.win-loader span:nth-child(1) {
+  animation-delay: 0s;
+}
+.win-loader span:nth-child(2) {
+  animation-delay: 0.12s;
+}
+.win-loader span:nth-child(3) {
+  animation-delay: 0.24s;
+}
+.win-loader span:nth-child(4) {
+  animation-delay: 0.36s;
+}
+.win-loader span:nth-child(5) {
+  animation-delay: 0.48s;
+}
+.win-loader span:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+@keyframes win-dot {
+  0% {
+    transform: rotate(0deg) translateY(-22px) scale(0.2);
+    opacity: 0;
+  }
+  8% {
+    transform: rotate(28deg) translateY(-22px) scale(1);
+    opacity: 1;
+  }
+  72% {
+    transform: rotate(320deg) translateY(-22px) scale(1);
+    opacity: 1;
+  }
+  88% {
+    transform: rotate(360deg) translateY(-22px) scale(0.2);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(360deg) translateY(-22px) scale(0.2);
+    opacity: 0;
+  }
+}
+
+.win-start-enter {
+  transform-origin: 0 100%;
+  animation: start-in var(--motion-fast) var(--ease-win) both;
+}
+
+.win-flyout-enter {
+  transform-origin: 100% 100%;
+  animation: flyout-in var(--motion-fast) var(--ease-win) both;
+}
+
+.win-window-enter {
+  animation: window-in var(--motion-fast) var(--ease-win) both;
+}
+
+@keyframes start-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes flyout-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes window-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.win-lock-time {
+  font-weight: 200;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  font-size: var(--text-win-lock);
+}
+
+.win-scroll::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+.win-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.win-scroll::-webkit-scrollbar-thumb {
+  background: rgb(255 255 255 / 22%);
+}
+.win-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgb(255 255 255 / 35%);
+}
+
+.win-scroll-light::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+.win-scroll-light::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+.win-scroll-light::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+}
+.win-scroll-light::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+@media (max-width: 767px) {
+  .win-window:not(.is-min) {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100% - var(--height-taskbar)) !important;
+    border-radius: 0 !important;
+  }
+
+  .win-start {
+    inset: 0 0 var(--height-taskbar) 0 !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .win-search-box {
+    display: none !important;
+  }
+
+  .win-task-label {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .win-loader span,
+  .win-start-enter,
+  .win-flyout-enter,
+  .win-window-enter {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
